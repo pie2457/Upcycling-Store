@@ -23,6 +23,10 @@ public class CommonResponse<T> {
 			.build();
 	}
 
+	public static <T> CommonResponse<T> success(T data) {
+		return success(data, null);
+	}
+
 	public static CommonResponse fail(String message, String errorCode) {
 		return CommonResponse.builder()
 			.result(Result.FAIL)
