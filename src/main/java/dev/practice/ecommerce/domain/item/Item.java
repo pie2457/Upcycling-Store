@@ -25,6 +25,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @Entity
 @NoArgsConstructor
 @Table(name = "items")
@@ -35,7 +36,7 @@ public class Item extends AbstractEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String itemToken;
-	private Long partnerId;
+	private String partnerToken;
 	private String itemName;
 	private Long itemPrice;
 
@@ -55,8 +56,8 @@ public class Item extends AbstractEntity {
 	}
 
 	@Builder
-	public Item(Long partnerId, String itemName, Long itemPrice) {
-		if (partnerId == null)
+	public Item(String partnerToken, String itemName, Long itemPrice) {
+		if (partnerToken == null)
 			throw new InvalidParameterException();
 		if (StringUtils.isEmpty(itemName))
 			throw new InvalidParameterException();
@@ -64,7 +65,7 @@ public class Item extends AbstractEntity {
 			throw new InvalidParameterException();
 
 		this.itemToken = TokenGenerator.randomCharacterWithPrefix(PREFIX_ITEM);
-		this.partnerId = partnerId;
+		this.partnerToken = partnerToken;
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.status = Status.PREPARE;
