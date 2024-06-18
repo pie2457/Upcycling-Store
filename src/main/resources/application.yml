@@ -1,6 +1,6 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/order?serverTimezone=UTC&characterEncoding=UTF-8
-    username: order-svc
-    password: order-pass
+    url: jdbc:mysql://localhost:3306/e_commerce?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: root-pass
