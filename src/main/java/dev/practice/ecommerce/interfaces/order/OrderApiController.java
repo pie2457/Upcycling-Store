@@ -2,6 +2,8 @@ package dev.practice.ecommerce.interfaces.order;
 
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,13 @@ public class OrderApiController {
 		var orderCommand = orderDtoMapper.of(request);
 		var orderToken = orderFacade.registerOrder(orderCommand);
 		var response = orderDtoMapper.of(orderToken);
+		return CommonResponse.success(response);
+	}
+
+	@GetMapping("/{orderToken}")
+	public CommonResponse retrieveOrder(@PathVariable String orderToken) {
+		var orderResult = orderFacade.retrieveOrder(orderToken);
+		var response = orderDtoMapper.of(orderResult);
 		return CommonResponse.success(response);
 	}
 }

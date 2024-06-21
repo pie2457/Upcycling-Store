@@ -14,6 +14,7 @@ public class OrderServiceImpl implements OrderService {
 	private final OrderReader orderReader;
 	private final OrderItemSeriesFactory orderItemSeriesFactory;
 	private final PaymentProcessor paymentProcessor;
+	private final OrderInfoMapper orderInfoMapper;
 
 	@Override
 	@Transactional
@@ -30,5 +31,12 @@ public class OrderServiceImpl implements OrderService {
 		var order = orderReader.getOrder(orderToken);
 		paymentProcessor.pay(order, paymentRequest);
 		order.orderComplete();
+	}
+
+	@Override
+	public OrderInfo.Main retrieveOrder(String orderToken) {
+		var order = orderReader.getOrder(orderToken);
+		var orderItemList = order.getOrderItemsList();
+		return orderInfoMapper.of(order, orderItemList);
 	}
 }
