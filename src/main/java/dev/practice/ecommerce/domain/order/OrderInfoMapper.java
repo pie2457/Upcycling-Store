@@ -25,4 +25,11 @@ public interface OrderInfoMapper {
 		@Mapping(expression = "java(order.getStatus().getDescription())", target = "statusDescription")
 	})
 	OrderInfo.Main of(Order order, List<OrderItem> orderItemList);
+
+	@Mappings({
+		@Mapping(expression = "java(orderItem.getDeliveryStatus().name())", target = "deliveryStatus"),
+		@Mapping(expression = "java(orderItem.getDeliveryStatus().getDescription())", target = "deliveryStatusDescription"),
+		@Mapping(expression = "java(orderItem.calculateTotalAmount())", target = "totalAmount")
+	})
+	OrderInfo.OrderItem of(OrderItem orderItem);
 }
