@@ -46,7 +46,7 @@ public class Order extends AbstractEntity {
 	private String payMethod;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.PERSIST)
-	private List<OrderItem> orderItemsList = Lists.newArrayList();
+	private List<OrderItem> orderItemList = Lists.newArrayList();
 
 	@Embedded
 	private DeliveryFragment deliveryFragment;
@@ -86,7 +86,7 @@ public class Order extends AbstractEntity {
 	}
 
 	public Long calculateTotalAmount() {
-		return orderItemsList.stream()
+		return orderItemList.stream()
 			.mapToLong(OrderItem::calculateTotalAmount)
 			.sum();
 	}
