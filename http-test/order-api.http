@@ -5,16 +5,16 @@ Content-Type: application/json
 {
   "userId": "12345",
   "payMethod": "NAVER_PAY",
-  "receiverName": "이희창",
+  "receiverName": "파이",
   "receiverPhone": "01000001234",
   "receiverZipcode": "12345",
-  "receiverAddress1": "서울시 강동구",
-  "receiverAddress2": "우리집",
+  "receiverAddress": "서울시 강북구",
+  "receiverDetailAddress": "우리집",
   "etcMessage": "감사합니다",
   "orderItemList": [
     {
       "orderCount": 2,
-      "itemToken": "itm_XqbL4h1l5mz1mnMZ",
+      "itemToken": "itm_82jz6tumpJSBTboB",
       "itemName": "티셔츠",
       "itemPrice": "30000",
       "orderItemOptionGroupList": [
@@ -44,7 +44,7 @@ Content-Type: application/json
     },
     {
       "orderCount": 1,
-      "itemToken": "itm_qCPGVzwvLVmCoZs6",
+      "itemToken": "itm_1yo9320fJkLblt7Y",
       "itemName": "양말",
       "itemPrice": "10000",
       "orderItemOptionGroupList": [
