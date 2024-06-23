@@ -40,7 +40,7 @@ public class OrderItemOptionGroup extends AbstractEntity {
 	private String itemOptionGroupName;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orderItemOptionGroup", cascade = CascadeType.PERSIST)
-	private List<OrderItemOption> orderItemOptionList = Lists.newLinkedList();
+	private List<OrderItemOption> orderItemOptionList = Lists.newArrayList();
 
 	@Builder
 	public OrderItemOptionGroup(

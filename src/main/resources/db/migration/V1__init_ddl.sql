@@ -96,20 +96,20 @@ create
 -- order
 create table orders
 (
-    id                bigint auto_increment primary key comment 'ID',
-    order_token       varchar(255) not null comment 'order_token',
-    user_id           bigint       not null comment '유저 ID',
-    pay_method        varchar(30)  not null comment '결제수단',
-    receiver_name     varchar(30)  not null comment '수령자명',
-    receiver_phone    varchar(30)  not null comment '수령자 휴대폰번호',
-    receiver_zipcode  varchar(10)  not null comment '수령자 우편번호',
-    receiver_address1 varchar(255) not null comment '수령자 주소1',
-    receiver_address2 varchar(255) not null comment '수령자 주소2',
-    etc_message       varchar(255) not null comment '남기는 말',
-    status            varchar(30)  not null default 'INIT' comment '상태',
-    ordered_at        datetime(6)  not null comment '주문 일시',
-    created_at        datetime(6)  not null comment '생성 일시',
-    updated_at        datetime(6)  null comment '수정 일시'
+    id                      bigint auto_increment primary key comment 'ID',
+    order_token             varchar(255) not null comment 'order_token',
+    user_id                 bigint       not null comment '유저 ID',
+    pay_method              varchar(30)  not null comment '결제수단',
+    receiver_name           varchar(30)  not null comment '수령자명',
+    receiver_phone          varchar(30)  not null comment '수령자 휴대폰번호',
+    receiver_zipcode        varchar(10)  not null comment '수령자 우편번호',
+    receiver_address        varchar(255) not null comment '수령자 주소1',
+    receiver_detail_address varchar(255) not null comment '수령자 주소2',
+    etc_message             varchar(255) not null comment '남기는 말',
+    status                  varchar(30)  not null default 'INIT' comment '상태',
+    ordered_at              datetime(6)  not null comment '주문 일시',
+    created_at              datetime(6)  not null comment '생성 일시',
+    updated_at              datetime(6)  null comment '수정 일시'
 ) comment 'orders' charset = utf8mb4;
 
 create
@@ -134,7 +134,7 @@ create table order_items
     id              bigint auto_increment primary key comment 'ID',
     order_id        bigint       not null comment 'order_id',
     order_count     tinyint      not null comment '주문갯수',
-    partner_id      bigint       not null comment '파트너 ID',
+    partner_token   varchar(255) not null comment '파트너 token',
     item_id         bigint       not null comment '상품 ID',
     item_name       varchar(255) not null comment '상품명',
     item_token      varchar(30)  not null comment '상품 token',
@@ -148,7 +148,7 @@ create
     index order_item_idx01 on order_items (order_id);
 
 create
-    index order_item_idx02 on order_items (partner_id);
+    index order_item_idx02 on order_items (partner_token);
 
 create
     index order_item_idx03 on order_items (item_id);

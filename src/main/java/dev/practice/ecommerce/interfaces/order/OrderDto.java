@@ -147,7 +147,7 @@ public class OrderDto {
 	@ToString
 	public static class OrderItem {
 		private final Integer orderCount;
-		private final Long partnerId;
+		private final String partnerToken;
 		private final Long itemId;
 		private final String itemName;
 		private final Long totalAmount;

@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "order_item")
+@Table(name = "order_items")
 public class OrderItem extends AbstractEntity {
 
 	@Id
@@ -49,7 +49,7 @@ public class OrderItem extends AbstractEntity {
 	private Long itemPrice;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orderItem", cascade = CascadeType.PERSIST)
-	private List<OrderItemOptionGroup> orderItemOptionGroupList = Lists.newLinkedList();
+	private List<OrderItemOptionGroup> orderItemOptionGroupList = Lists.newArrayList();
 
 	@Enumerated(EnumType.STRING)
 	private DeliveryStatus deliveryStatus;

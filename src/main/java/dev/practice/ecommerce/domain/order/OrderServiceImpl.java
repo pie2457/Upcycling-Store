@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderInfo.Main retrieveOrder(String orderToken) {
 		var order = orderReader.getOrder(orderToken);
-		var orderItemList = order.getOrderItemsList();
+		var orderItemList = order.getOrderItemList();
 		return orderInfoMapper.of(order, orderItemList);
 	}
 }
