@@ -5,7 +5,9 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import dev.practice.ecommerce.domain.order.payment.PayMethod;
 import dev.practice.ecommerce.interfaces.order.OrderDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -75,6 +77,16 @@ public class GiftOrderDto {
 
 		@NotNull(message = "itemOptionPrice 는 필수값 입니다.")
 		private Long itemOptionPrice;
+
+	}
+
+	@Getter
+	@Builder
+	@ToString
+	public static class PaymentRequest {
+		private final String orderToken;
+		private final Long amount;
+		private final PayMethod payMethod;
 	}
 
 	@Getter

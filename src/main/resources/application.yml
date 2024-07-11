@@ -1,6 +1,14 @@
 spring:
+  profiles:
+    include:
+      - secret
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/e_commerce?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: root-pass
+
+cloud:
+  aws:
+    access-key: ${aws.access-key}
+    secret-key: ${aws.secret-key}
