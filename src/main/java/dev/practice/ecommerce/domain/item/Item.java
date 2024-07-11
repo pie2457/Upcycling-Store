@@ -71,10 +71,6 @@ public class Item extends AbstractEntity {
 		this.status = Status.PREPARE;
 	}
 
-	public void changePrepare() {
-		this.status = Status.PREPARE;
-	}
-
 	public void changeOnSales() {
 		this.status = Status.ON_SALES;
 	}
