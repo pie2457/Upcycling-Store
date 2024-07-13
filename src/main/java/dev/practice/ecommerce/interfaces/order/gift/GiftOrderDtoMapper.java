@@ -17,4 +17,6 @@ public interface GiftOrderDtoMapper {
 	GiftOrderDto.RegisterResponse of(String orderToken);
 
 	OrderCommand.PaymentRequest of(GiftOrderDto.PaymentRequest request);
+
+	OrderCommand.UpdateReceiverRequest of(GiftOrderDto.UpdateReceiverRequest request);
 }

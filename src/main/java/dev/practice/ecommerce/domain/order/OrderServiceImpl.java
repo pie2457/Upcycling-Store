@@ -39,4 +39,12 @@ public class OrderServiceImpl implements OrderService {
 		var orderItemList = order.getOrderItemList();
 		return orderInfoMapper.of(order, orderItemList);
 	}
+
+	@Override
+	@Transactional
+	public void updateReceiver(String orderToken, OrderCommand.UpdateReceiverRequest receiverRequest) {
+		var order = orderReader.getOrder(orderToken);
+		var updateOrder = order.toEntity(order, receiverRequest);
+		orderStore.store(updateOrder);
+	}
 }

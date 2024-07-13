@@ -6,6 +6,7 @@ import javax.persistence.Embeddable;
 
 import org.apache.commons.lang3.StringUtils;
 
+import dev.practice.ecommerce.domain.order.OrderCommand;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,5 +45,16 @@ public class DeliveryFragment {
 		this.receiverAddress = receiverAddress;
 		this.receiverDetailAddress = receiverDetailAddress;
 		this.etcMessage = etcMessage;
+	}
+
+	public static DeliveryFragment from(OrderCommand.UpdateReceiverRequest receiverRequest) {
+		return DeliveryFragment.builder()
+			.receiverName(receiverRequest.getReceiverName())
+			.receiverPhone(receiverRequest.getReceiverPhone())
+			.receiverZipcode(receiverRequest.getReceiverZipcode())
+			.receiverAddress(receiverRequest.getReceiverAddress())
+			.receiverDetailAddress(receiverRequest.getReceiverDetailAddress())
+			.etcMessage(receiverRequest.getEtcMessage())
+			.build();
 	}
 }

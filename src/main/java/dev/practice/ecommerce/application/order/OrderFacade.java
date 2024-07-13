@@ -28,4 +28,8 @@ public class OrderFacade {
 		orderService.paymentOrder(paymentRequest);
 		notificationService.sendKakao("전화번호", "description");
 	}
+
+	public void updateReceiverInfo(String orderToken, OrderCommand.UpdateReceiverRequest receiverRequest) {
+		orderService.updateReceiver(orderToken, receiverRequest);
+	}
 }

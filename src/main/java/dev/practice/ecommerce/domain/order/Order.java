@@ -107,4 +107,10 @@ public class Order extends AbstractEntity {
 		}
 		return false;
 	}
+
+	public Order toEntity(Order order, OrderCommand.UpdateReceiverRequest receiverRequest) {
+		order.deliveryFragment = DeliveryFragment.from(receiverRequest);
+		order.status = Status.DELIVERY_PREPARE;
+		return order;
+	}
 }

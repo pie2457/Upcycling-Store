@@ -2,6 +2,7 @@ package dev.practice.ecommerce.interfaces.order.gift;
 
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,15 @@ public class GiftOrderApiController {
 	public CommonResponse paymentOrder(@RequestBody @Valid GiftOrderDto.PaymentRequest request) {
 		var orderPaymentCommand = giftOrderDtoMapper.of(request);
 		giftFacade.paymentOrder(orderPaymentCommand);
+		return CommonResponse.success("OK");
+	}
+
+	@PostMapping("/{orderToken}/update-receiver-info")
+	public CommonResponse updateReceiverInfo(
+		@PathVariable String orderToken,
+		@RequestBody GiftOrderDto.UpdateReceiverRequest request) {
+		var updateReceiverCommand = giftOrderDtoMapper.of(request);
+		orderFacade.updateReceiverInfo(orderToken, updateReceiverCommand);
 		return CommonResponse.success("OK");
 	}
 }
