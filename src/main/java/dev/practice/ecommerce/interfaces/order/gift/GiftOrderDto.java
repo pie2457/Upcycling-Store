@@ -90,6 +90,19 @@ public class GiftOrderDto {
 	}
 
 	@Getter
+	@Builder
+	@ToString
+	public static class UpdateReceiverRequest {
+		private final String giftToken;
+		private final String receiverName;
+		private final String receiverPhone;
+		private final String receiverZipcode;
+		private final String receiverAddress;
+		private final String receiverDetailAddress;
+		private final String etcMessage;
+	}
+
+	@Getter
 	@ToString
 	public static class RegisterResponse {
 		private String orderToken;
