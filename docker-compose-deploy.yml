@@ -1,0 +1,10 @@
+version: '3.3'
+
+services:
+  app:
+    container_name: order-gift-app
+    image: piepiee/order-gift:0.0
+    ports:
+      - 8080:8080
+    environment:
+      - TZ=Asia/Seoul
